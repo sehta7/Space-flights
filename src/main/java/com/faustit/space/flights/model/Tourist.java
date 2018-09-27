@@ -4,10 +4,12 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Tourist {
 
+	@Id
 	private String id;
 	private String firstName;
 	private String lastName;
