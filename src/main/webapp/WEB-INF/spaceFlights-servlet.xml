@@ -12,13 +12,27 @@
 
 	<mvc:annotation-driven></mvc:annotation-driven>
 
-
-
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	
+
+	<bean id="ds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/spaceflights"></property>
+		<property name="username" value="root"></property>
+	</bean>
+
+	<bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+
+	<bean id="touristDao" class="com.faustit.space.flights.dao.TouristDaoImpl">
+		<property name="jdbcTemplate" ref="jt"></property>
+	</bean>
 	
 </beans>
