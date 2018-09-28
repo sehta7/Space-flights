@@ -38,7 +38,7 @@ public class TouristDaoImpl implements TouristDao{
 				tourist.setCountry(rs.getString("country"));
 				tourist.setNotes(rs.getString("notes"));
 				tourist.setBirth(rs.getDate("birth"));
-				
+				String sql = "";
 				return tourist;
 			}
 		});
