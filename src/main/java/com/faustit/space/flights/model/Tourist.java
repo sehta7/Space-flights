@@ -18,6 +18,7 @@ public class Tourist {
 	private String notes;
 	private Date birth;
 	private List<Flight> flights;
+	
 	public String getId() {
 		return id;
 	}

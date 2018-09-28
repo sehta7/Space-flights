@@ -15,6 +15,7 @@ public class Flight {
 	private int seatsNumber;
 	private int touristsNumber;
 	private float price;
+	
 	public String getId() {
 		return id;
 	}
