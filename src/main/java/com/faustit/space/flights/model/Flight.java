@@ -1,6 +1,7 @@
 package com.faustit.space.flights.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,7 +14,7 @@ public class Flight {
 	private Timestamp departure;
 	private Timestamp arrival;
 	private int seatsNumber;
-	private int touristsNumber;
+	private List<Tourist> tourists;
 	private float price;
 	
 	public String getId() {
@@ -40,11 +41,11 @@ public class Flight {
 	public void setSeatsNumber(int seatsNumber) {
 		this.seatsNumber = seatsNumber;
 	}
-	public int getTouristsNumber() {
-		return touristsNumber;
+	public List<Tourist> getTourists() {
+		return tourists;
 	}
-	public void setTouristsNumber(int touristsNumber) {
-		this.touristsNumber = touristsNumber;
+	public void setTourists(List<Tourist> tourists) {
+		this.tourists = tourists;
 	}
 	public float getPrice() {
 		return price;
@@ -56,7 +57,7 @@ public class Flight {
 	@Override
 	public String toString() {
 		return "Flight [id=" + id + ", departure=" + departure + ", arrival=" + arrival + ", seatsNumber=" + seatsNumber
-				+ ", touristsNumber=" + touristsNumber + ", price=" + price + "]";
+				+ ", tourists=" + tourists + ", price=" + price + "]";
 	}
 
 }
