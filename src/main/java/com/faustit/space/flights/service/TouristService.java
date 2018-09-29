@@ -8,6 +8,7 @@ import com.faustit.space.flights.model.Tourist;
 public interface TouristService {
 
 	public List<Tourist> touristsList();
+	public List<Flight> flightsList(Tourist tourist);
 	public void addTourist(Tourist tourist);
 	public void deleteTourist(Tourist tourist);
 	public  void updateTourist(Tourist tourist);

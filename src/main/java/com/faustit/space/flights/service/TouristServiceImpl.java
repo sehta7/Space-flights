@@ -16,7 +16,12 @@ public class TouristServiceImpl implements TouristService{
 	TouristDao touristDao;
 	
 	public List<Tourist> touristsList() {
+		System.out.println("Tourist Service - " + touristDao.touristsList().toString());
 		return touristDao.touristsList();
+	}
+	
+	public List<Flight> flightsList(Tourist tourist) {
+		return touristDao.flightsList(tourist);
 	}
 
 	public void addTourist(Tourist tourist) {
