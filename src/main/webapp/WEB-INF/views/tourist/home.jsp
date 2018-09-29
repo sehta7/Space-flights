@@ -11,12 +11,12 @@
 		<table>
             <tr>
                <td>
-               	<form:form method = "GET" action = "/tourist/add">
+               	<form:form method = "GET" action = "/space.flights/tourist/add">
                   <input type = "submit" value = "Add Tourist"/>
                	</form:form>
                </td>
                <td>
-               	<form:form method = "GET" action = "/tourist/list">
+               	<form:form method = "GET" action = "/space.flights/tourist/list">
                   <input type = "submit" value = "See Tourists"/>
                	</form:form>
                </td>
