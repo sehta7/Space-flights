@@ -67,8 +67,8 @@ public class TouristDaoImpl implements TouristDao{
 	}
 
 	public void addTourist(Tourist tourist) {
-		String sql = "insert into tourists (firstName, lastName, gender, country, notes, birth, flights) values (?, ?, ?, ?, ?, ?, ?)";
-		jdbcTemplate.update(sql, new Object[] {tourist.getFirstName(), tourist.getLastName(), tourist.getGender(), tourist.getCountry(), tourist.getNotes(), tourist.getBirth(), tourist.getFlights()});
+		String sql = "insert into tourists (firstName, lastName, gender, country, notes, birth) values (?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, new Object[] {tourist.getFirstName(), tourist.getLastName(), tourist.getGender(), tourist.getCountry(), tourist.getNotes(), tourist.getBirth()});
 		
 	}
 
