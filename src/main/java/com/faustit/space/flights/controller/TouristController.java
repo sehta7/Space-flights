@@ -1,6 +1,8 @@
 package com.faustit.space.flights.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,8 +24,14 @@ public class TouristController {
 	
 	@RequestMapping("/")
 	public ModelAndView home() {
-		ModelAndView model = new ModelAndView("tourist/home");
-		return model;
+		return new ModelAndView("tourist/home");
+	}
+	
+	@RequestMapping("/tourists")
+	public ModelAndView tourists() {
+		List<Tourist> touristsList = touristService.touristsList();
+		ModelAndView modelAndView = new ModelAndView("tourist/tourists", "touristsList", touristsList);
+		return modelAndView;
 	}
 	
 	@RequestMapping("/list")
@@ -39,9 +47,22 @@ public class TouristController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String add() {
-		return "tourist/add";
+	@RequestMapping("/add")
+	public ModelAndView add() {
+		ModelAndView model = new ModelAndView("tourist/add", "command", new Tourist());
+		Map<String, String> gender = new HashMap<String, String>();
+		gender.put("0", "not know");
+		gender.put("1", "male");
+		gender.put("2", "female");
+		gender.put("9", "not applicable");
+		model.addObject("gender", gender);
+		return model;
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ModelAndView save(@ModelAttribute("tourist") Tourist tourist) {
+		touristService.addTourist(tourist);
+		return new ModelAndView("redirect:/tourist/tourists");
 	}
 	
 }
