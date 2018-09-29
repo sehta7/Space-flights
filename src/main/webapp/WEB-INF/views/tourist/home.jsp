@@ -20,6 +20,11 @@
                   <input type = "submit" value = "See Tourists"/>
                	</form:form>
                </td>
+               <td>
+               	<form:form method = "GET" action = "/space.flights/tourist/tourists">
+                  <input type = "submit" value = "Only Tourists"/>
+               	</form:form>
+               </td>
             </tr>
          </table>
 	</body>
