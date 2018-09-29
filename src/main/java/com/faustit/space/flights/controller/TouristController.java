@@ -15,6 +15,6 @@ public class TouristController {
 	
 	@RequestMapping("/")
 	public String home() {
-		return "home";
+		return "tourist/home";
 	}
 }
