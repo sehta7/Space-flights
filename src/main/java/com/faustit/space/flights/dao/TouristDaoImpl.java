@@ -27,22 +27,43 @@ public class TouristDaoImpl implements TouristDao{
 	}
 
 	public List<Tourist> touristsList() {
-		String sql = "select t.firstName, t.lasnName, t.gender, t.country, t.notes, t.birth," + 
-				"f.departure, f.arrival, f.price from tourists t, flaights f";
+		String sql = "select * from tourists";
 		List<Tourist> touristsList = jdbcTemplate.query(sql, new RowMapper<Tourist>() {
 			public Tourist mapRow(ResultSet rs, int rowNumber) throws SQLException{
 				Tourist tourist = new Tourist();
+				tourist.setId(rs.getString("id"));
 				tourist.setFirstName(rs.getString("firstName"));
 				tourist.setLastName(rs.getString("lastName"));
 				tourist.setGender(rs.getInt("gender"));
 				tourist.setCountry(rs.getString("country"));
 				tourist.setNotes(rs.getString("notes"));
 				tourist.setBirth(rs.getDate("birth"));
-				String sql = "";
+				System.out.println("TOURIST: " + tourist.toString());
 				return tourist;
 			}
 		});
 		return touristsList;
+	}
+	
+	public List<Flight> flightsList(Tourist tourist){
+		String sql = "select f.id, f.departure, f.arrival, f.seatsNumber, f.price" + 
+				" from flights as f, tourists_flights as tf" + 
+				" where f.id=tf.flightId" + 
+				" and tf.touristId='"+tourist.getId()+"'";
+		List<Flight> flightsList = jdbcTemplate.query(sql, new RowMapper<Flight>() {
+			public Flight mapRow(ResultSet rs, int rowNumber) throws SQLException{
+				Flight flight = new Flight();
+				flight.setId(rs.getString("id"));
+				flight.setDeparture(rs.getTimestamp("departure"));
+				flight.setArrival(rs.getTimestamp("arrival"));
+				flight.setSeatsNumber(rs.getInt("seatsNumber"));
+				flight.setPrice(rs.getFloat("price"));
+				System.out.println("FLIGHT: " + flight.toString());
+				return flight;
+			}
+		});
+		return flightsList;
+		
 	}
 
 	public void addTourist(Tourist tourist) {
@@ -64,7 +85,7 @@ public class TouristDaoImpl implements TouristDao{
 	}
 
 	public void addFlight(Flight flight, Tourist tourist) {
-		if(flight.getTouristsNumber() < flight.getSeatsNumber()) {
+		if(flight.getTourists().size() < flight.getSeatsNumber()) {
 			String sql = "update tourists set flights='"+tourist.getFlights()+"'";
 			
 			/*List<Flight> flightsList = jdbcTemplate.query(sql, new RowMapper<Flight>() {
