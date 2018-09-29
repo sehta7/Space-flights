@@ -23,7 +23,7 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver"></property>
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/spaceflights"></property>
+			value="jdbc:mysql://localhost:3306/spaceflights?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"></property>
 		<property name="username" value="root"></property>
 	</bean>
 
