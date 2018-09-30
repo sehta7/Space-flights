@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,7 +25,7 @@ public class TouristController {
 	
 	@RequestMapping("/")
 	public ModelAndView home() {
-		return new ModelAndView("tourist/home");
+		return new ModelAndView("tourist/home", "lastName", new String());
 	}
 	
 	@RequestMapping("/tourists")
@@ -39,11 +40,12 @@ public class TouristController {
 		List<Tourist> touristsList = touristService.touristsList();
 		System.out.println("Controller --> " + touristsList.toString());
 		List<Flight> flightsList = null;
-		ModelAndView modelAndView = new ModelAndView("tourist/list", "touristsList", touristsList);
 		for (Tourist tourist : touristsList) {
 			flightsList = touristService.flightsList(tourist);
-			modelAndView.addObject("flightsList", flightsList);
+			tourist.setFlights(flightsList);
+			System.out.println("next flight of " + tourist.toString() + " = " + flightsList.toString());
 		}
+		ModelAndView modelAndView = new ModelAndView("tourist/list", "touristsList", touristsList);
 		return modelAndView;
 	}
 	
@@ -62,6 +64,12 @@ public class TouristController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute("tourist") Tourist tourist) {
 		touristService.addTourist(tourist);
+		return new ModelAndView("redirect:/tourist/tourists");
+	}
+	
+	@RequestMapping("/delete/{id}")
+	public ModelAndView delete(@PathVariable("id") String id) {
+		touristService.deleteTourist(id);
 		return new ModelAndView("redirect:/tourist/tourists");
 	}
 	
