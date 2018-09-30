@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -38,7 +39,7 @@ public class TouristDaoImpl implements TouristDao{
 				tourist.setCountry(rs.getString("country"));
 				tourist.setNotes(rs.getString("notes"));
 				tourist.setBirth(rs.getDate("birth"));
-				System.out.println("TOURIST: " + tourist.toString());
+				//System.out.println("TOURIST: " + tourist.toString());
 				return tourist;
 			}
 		});
@@ -58,7 +59,7 @@ public class TouristDaoImpl implements TouristDao{
 				flight.setArrival(rs.getTimestamp("arrival"));
 				flight.setSeatsNumber(rs.getInt("seatsNumber"));
 				flight.setPrice(rs.getFloat("price"));
-				System.out.println("FLIGHT: " + flight.toString());
+				//System.out.println("FLIGHT: " + flight.toString());
 				return flight;
 			}
 		});
@@ -79,9 +80,19 @@ public class TouristDaoImpl implements TouristDao{
 	}
 
 	public void updateTourist(Tourist tourist) {
-		String sql = "update tourists set firstName='"+tourist.getFirstName()+"',lastName='"+tourist.getLastName()+"',gender='"+tourist.getGender()+"',country='"+tourist.getCountry()+"',notes='"+tourist.getNotes()+"',birth='"+tourist.getBirth()+"',flights='"+tourist.getFlights()+"'";
+		System.out.println("Looking for: " + tourist.toString());
+		String sql = "update tourists set" + 
+				" firstName='"+tourist.getFirstName()+"',lastName='"+tourist.getLastName()+"',gender='"+tourist.getGender()+"',country='"+tourist.getCountry()+"',notes='"+tourist.getNotes()+"',birth='"+tourist.getBirth()+"'"
+				+ " where id='"+tourist.getId()+"'";
 		jdbcTemplate.update(sql);
 		
+	}
+	
+	public Tourist findById(String id) {
+		String sql = "select * from tourists where id=?";
+		Tourist tourist = jdbcTemplate.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<Tourist>(Tourist.class));
+		System.out.println("After QUERY = " + tourist.toString());
+		return tourist;
 	}
 
 	public void addFlight(Flight flight, Tourist tourist) {

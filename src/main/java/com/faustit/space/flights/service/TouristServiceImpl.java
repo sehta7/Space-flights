@@ -38,6 +38,10 @@ public class TouristServiceImpl implements TouristService{
 		touristDao.updateTourist(tourist);
 		
 	}
+	
+	public Tourist findById(String id) {
+		return touristDao.findById(id);
+	}
 
 	public void addFlight(Flight flight, Tourist tourist) {
 		touristDao.addFlight(flight, tourist);
