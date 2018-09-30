@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,22 +28,20 @@
 				<td>${tourist.birth}</td>
 			</tr>
 			<tr>
-				<th>Flights</th>
-			</tr>
-			<tr>
+				<td>Flights:</td>
 				<td>Departure</td>
 				<td>Arrival</td>
 				<td>Price</td>
 			</tr>
 			<tr>
-				<c:forEach var="flight" items="${flightsList}">
+				<c:forEach var="flight" items="${tourist.flights}">
 					<tr>
+						<td></td>
 						<td>${flight.departure}</td>
 						<td>${flight.arrival}</td>
 						<td>${flight.price}</td>
 					</tr>
 				</c:forEach>
-			</tr>
 		</c:forEach>
 	</table>
 </body>
