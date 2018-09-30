@@ -73,4 +73,25 @@ public class TouristController {
 		return new ModelAndView("redirect:/tourist/tourists");
 	}
 	
+	@RequestMapping("/edit/{id}")
+	public ModelAndView edit(@PathVariable("id") String id) {
+		Tourist tourist = touristService.findById(id);
+		System.out.println("I found: " + tourist.toString());
+		ModelAndView model = new ModelAndView("tourist/edit", "command", tourist);
+		Map<String, String> gender = new HashMap<String, String>();
+		gender.put("0", "not know");
+		gender.put("1", "male");
+		gender.put("2", "female");
+		gender.put("9", "not applicable");
+		model.addObject("gender", gender);
+		return model;
+	}
+	
+	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
+	public ModelAndView editsave(@ModelAttribute("Tourist") Tourist tourist) {
+		System.out.println("Tourist to update " + tourist.toString());
+		touristService.updateTourist(tourist);
+		return new ModelAndView("redirect:/tourist/tourists");
+	}
+	
 }
