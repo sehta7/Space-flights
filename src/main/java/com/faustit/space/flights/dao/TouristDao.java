@@ -14,5 +14,5 @@ public interface TouristDao {
 	public  void updateTourist(Tourist tourist);
 	public Tourist findById(String id);
 	public void addFlight(Flight flight, Tourist tourist);
-	public void deleteFlight(Flight flight, Tourist tourist);
+	public void deleteFlight(String touristId, String flightId);
 }

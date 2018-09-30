@@ -48,8 +48,8 @@ public class TouristServiceImpl implements TouristService{
 		
 	}
 
-	public void deleteFlight(Flight flight, Tourist tourist) {
-		touristDao.deleteFlight(flight, tourist);
+	public void deleteFlight(String touristId, String flightId) {
+		touristDao.deleteFlight(touristId, flightId);
 		
 	}
 
