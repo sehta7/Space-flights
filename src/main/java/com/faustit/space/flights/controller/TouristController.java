@@ -31,6 +31,10 @@ public class TouristController {
 	@RequestMapping("/tourists")
 	public ModelAndView tourists() {
 		List<Tourist> touristsList = touristService.touristsList();
+		for (Tourist tourist : touristsList) {
+			List<Flight> flightsList = touristService.flightsList(tourist);
+			tourist.setFlights(flightsList);
+		}
 		ModelAndView modelAndView = new ModelAndView("tourist/tourists", "touristsList", touristsList);
 		return modelAndView;
 	}
@@ -43,7 +47,7 @@ public class TouristController {
 		for (Tourist tourist : touristsList) {
 			flightsList = touristService.flightsList(tourist);
 			tourist.setFlights(flightsList);
-			System.out.println("next flight of " + tourist.toString() + " = " + flightsList.toString());
+			//System.out.println("next flight of " + tourist.toString() + " = " + flightsList.toString());
 		}
 		ModelAndView modelAndView = new ModelAndView("tourist/list", "touristsList", touristsList);
 		return modelAndView;
@@ -92,6 +96,12 @@ public class TouristController {
 		System.out.println("Tourist to update " + tourist.toString());
 		touristService.updateTourist(tourist);
 		return new ModelAndView("redirect:/tourist/tourists");
+	}
+	
+	@RequestMapping("/deleteFlight/{idT}/{idF}")
+	public ModelAndView deleteFlight(@PathVariable("idT") String idT, @PathVariable("idF") String idF) {
+		touristService.deleteFlight(idT, idF);
+		return new ModelAndView("redirect:/tourist/list");
 	}
 	
 }
