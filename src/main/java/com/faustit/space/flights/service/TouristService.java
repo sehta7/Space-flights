@@ -10,7 +10,7 @@ public interface TouristService {
 	public List<Tourist> touristsList();
 	public List<Flight> flightsList(Tourist tourist);
 	public void addTourist(Tourist tourist);
-	public void deleteTourist(Tourist tourist);
+	public void deleteTourist(String id);
 	public  void updateTourist(Tourist tourist);
 	public void addFlight(Flight flight, Tourist tourist);
 	public void deleteFlight(Flight flight, Tourist tourist);

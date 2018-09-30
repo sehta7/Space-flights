@@ -29,8 +29,8 @@ public class TouristServiceImpl implements TouristService{
 		
 	}
 
-	public void deleteTourist(Tourist tourist) {
-		touristDao.deleteTourist(tourist);
+	public void deleteTourist(String id) {
+		touristDao.deleteTourist(id);
 		
 	}
 
