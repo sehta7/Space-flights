@@ -70,4 +70,19 @@ public class FlightController {
 		flightService.deleteFlight(id);
 		return new ModelAndView("redirect:/flight/flights");
 	}
+	
+	@RequestMapping("/edit/{id}")
+	public ModelAndView edit(@PathVariable("id") String id) {
+		Flight flight = flightService.findById(id);
+		System.out.println("Found to edit - " + flight.toString());
+		ModelAndView model = new ModelAndView("flight/edit", "command", flight);
+		return model;
+	}
+	
+	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
+	public ModelAndView editsave(@ModelAttribute("Flight") Flight flight) {
+		System.out.println("Edit : " + flight.toString());
+		flightService.updateFlight(flight);
+		return new ModelAndView("redirect:/flight/flights");
+	}
 }
