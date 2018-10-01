@@ -58,7 +58,7 @@ public class FlightDaoImpl implements FlightDao{
 		return null;
 	}
 
-	public void addTourist(String itouristI, String flightId) {
+	public void addTourist(String touristId, String flightId) {
 		// TODO Auto-generated method stub
 		
 	}
