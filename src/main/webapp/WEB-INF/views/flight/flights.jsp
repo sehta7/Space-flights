@@ -9,7 +9,7 @@
 <title>List of tourist</title>
 </head>
 <body>
-	<form:form method="GET" action="/space.flights/tourist/">
+	<form:form method="GET" action="/space.flights/flight/">
 		<input type="submit" value="RETURN" />
 	</form:form>
 	<br>
