@@ -33,4 +33,17 @@ public class FlightController {
 		ModelAndView modelAndView = new ModelAndView("flight/flights", "flightsList", flightsList);
 		return modelAndView;
 	}
+	
+	@RequestMapping("/list")
+	public ModelAndView list() {
+		List<Flight> flightsList = flightService.flightsList();
+		List<Tourist> touristsList = null;
+		for (Flight flight : flightsList) {
+			touristsList = flightService.touristsList(flight);
+			System.out.println("list: " + touristsList.toString());
+			flight.setTourists(touristsList);
+		}
+		ModelAndView modelAndView = new ModelAndView("flight/list", "flightsList", flightsList);
+		return modelAndView;
+	}
 }
