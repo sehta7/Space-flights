@@ -9,6 +9,10 @@
 <title>List of tourist</title>
 </head>
 <body>
+	<form:form method="GET" action="/space.flights/tourist/">
+		<input type="submit" value="RETURN" />
+	</form:form>
+	<br>
 	<table border="2" width="70%" cellpadding="2">
 		<tr>
 			<th>First Name</th>
@@ -19,7 +23,7 @@
 			<th>Birth</th>
 		</tr>
 		<c:forEach var="tourist" items="${touristsList}">
-				<tr>
+			<tr>
 					<td>${tourist.firstName}</td>
 					<td>${tourist.lastName}</td>
 					<td>${tourist.gender}</td>
@@ -44,7 +48,8 @@
 						<td><a href="deleteFlight/${tourist.id}/${flight.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
-		</c:forEach>
-	</table>
+		
+	</c:forEach>
+		</table>
 </body>
 </html>

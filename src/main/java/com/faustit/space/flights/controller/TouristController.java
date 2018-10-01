@@ -1,7 +1,5 @@
 package com.faustit.space.flights.controller;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,7 +87,6 @@ public class TouristController {
 	@RequestMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") String id) {
 		Tourist tourist = touristService.findById(id);
-		System.out.println("I found: " + tourist.toString());
 		ModelAndView model = new ModelAndView("tourist/edit", "command", tourist);
 		Map<String, String> gender = new HashMap<String, String>();
 		gender.put("0", "not know");
