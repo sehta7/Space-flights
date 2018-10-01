@@ -45,7 +45,8 @@ public class FlightDaoImpl implements FlightDao{
 	public List<Tourist> touristsList(Flight flight) {
 		String sql = "select t.id, t.firstName, t.lastName, t.gender, t.country, t.notes, t.birth"
 				+ " from tourists as t, tourists_flights as tf" 
-				+ " where t.id=tf.flightId and tf.touristId='"+flight.getId() + "'";
+				+ " where t.id=tf.touristId and tf.flightId='"+flight.getId() + "'";
+		System.out.println("I'm in.");
 		List<Tourist> touristsList = jdbcTemplate.query(sql, new RowMapper<Tourist>() {
 			public Tourist mapRow(ResultSet rs, int rowNumber) throws SQLException {
 				Tourist tourist = new Tourist();
@@ -56,6 +57,7 @@ public class FlightDaoImpl implements FlightDao{
 				tourist.setCountry(rs.getString("country"));
 				tourist.setNotes(rs.getString("notes"));
 				tourist.setBirth(rs.getDate("birth"));
+				System.out.println("tourist " + tourist.toString());
 				return tourist;
 			}
 		});
