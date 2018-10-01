@@ -18,6 +18,7 @@ public class Tourist {
 	private String notes;
 	private Date birth;
 	private List<Flight> flights;
+	private List<Tourist> tourists;
 	
 	public String getId() {
 		return id;
@@ -66,6 +67,13 @@ public class Tourist {
 	}
 	public void setFlights(List<Flight> flights) {
 		this.flights = flights;
+	}
+	
+	public List<Tourist> getTourists() {
+		return tourists;
+	}
+	public void setTourists(List<Tourist> tourists) {
+		this.tourists = tourists;
 	}
 	
 	@Override
