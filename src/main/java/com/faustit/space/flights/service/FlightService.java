@@ -14,6 +14,6 @@ public interface FlightService {
 	public void deleteFlight(String id);
 	public  void updateFlight(Flight flight);
 	public Flight findById(String id);
-	public void addTourist(String itouristI, String flightId);
+	public void addTourist(String touristId, String flightId);
 	public void deleteTourist(String touristId, String flightId);
 }

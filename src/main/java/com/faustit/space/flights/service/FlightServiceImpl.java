@@ -16,47 +16,43 @@ public class FlightServiceImpl implements FlightService{
 	FlightDao flightDao;
 	
 	public List<Flight> flightsList() {
-		// TODO Auto-generated method stub
-		return null;
+		return flightDao.flightsList();
 	}
 
 	public List<Flight> flightsList(Flight flight) {
-		// TODO Auto-generated method stub
-		return null;
+		return flightDao.flightsList(flight);
 	}
 
 	public List<Tourist> touristsList() {
-		// TODO Auto-generated method stub
-		return null;
+		return flightDao.touristsList();
 	}
 
 	public void addFlight(Flight flight) {
-		// TODO Auto-generated method stub
+		flightDao.addFlight(flight);
 		
 	}
 
 	public void deleteFlight(String id) {
-		// TODO Auto-generated method stub
+		flightDao.deleteFlight(id);
 		
 	}
 
 	public void updateFlight(Flight flight) {
-		// TODO Auto-generated method stub
+		flightDao.updateFlight(flight);
 		
 	}
 
 	public Flight findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return flightDao.findById(id);
 	}
 
-	public void addTourist(String itouristI, String flightId) {
-		// TODO Auto-generated method stub
+	public void addTourist(String touristId, String flightId) {
+		flightDao.addTourist(touristId, flightId);
 		
 	}
 
 	public void deleteTourist(String touristId, String flightId) {
-		// TODO Auto-generated method stub
+		flightDao.deleteTourist(touristId, flightId);
 		
 	}
 
