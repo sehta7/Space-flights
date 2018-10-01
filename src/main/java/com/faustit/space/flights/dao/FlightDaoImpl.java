@@ -70,7 +70,8 @@ public class FlightDaoImpl implements FlightDao{
 	}
 
 	public void addFlight(Flight flight) {
-		// TODO Auto-generated method stub
+		String sql = "insert into flights (departure, arrival, seatsNumber, price) values (?, ?, ?, ?)";
+		jdbcTemplate.update(sql, new Object[] { flight.getDeparture(), flight.getArrival(), flight.getSeatsNumber(), flight.getPrice() });
 		
 	}
 
