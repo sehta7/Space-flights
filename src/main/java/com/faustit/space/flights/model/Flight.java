@@ -16,6 +16,7 @@ public class Flight {
 	private int seatsNumber;
 	private List<Tourist> tourists;
 	private float price;
+	private List<Flight> flights;
 	
 	public String getId() {
 		return id;
@@ -52,6 +53,13 @@ public class Flight {
 	}
 	public void setPrice(float price) {
 		this.price = price;
+	}
+	
+	public List<Flight> getFlights() {
+		return flights;
+	}
+	public void setFlights(List<Flight> flights) {
+		this.flights = flights;
 	}
 	
 	@Override
