@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -13,7 +14,7 @@ import com.faustit.space.flights.model.Flight;
 import com.faustit.space.flights.model.Tourist;
 
 @Repository
-public class FlightDaoImpl implements FlightDao{
+public class FlightDaoImpl implements FlightDao {
 
 	private JdbcTemplate jdbcTemplate;
 
@@ -25,7 +26,7 @@ public class FlightDaoImpl implements FlightDao{
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
-	
+
 	public List<Flight> flightsList() {
 		String sql = "select * from flights";
 		List<Flight> flightsList = jdbcTemplate.query(sql, new RowMapper<Flight>() {
@@ -44,8 +45,8 @@ public class FlightDaoImpl implements FlightDao{
 
 	public List<Tourist> touristsList(Flight flight) {
 		String sql = "select t.id, t.firstName, t.lastName, t.gender, t.country, t.notes, t.birth"
-				+ " from tourists as t, tourists_flights as tf" 
-				+ " where t.id=tf.touristId and tf.flightId='"+flight.getId() + "'";
+				+ " from tourists as t, tourists_flights as tf" + " where t.id=tf.touristId and tf.flightId='"
+				+ flight.getId() + "'";
 		System.out.println("I'm in.");
 		List<Tourist> touristsList = jdbcTemplate.query(sql, new RowMapper<Tourist>() {
 			public Tourist mapRow(ResultSet rs, int rowNumber) throws SQLException {
@@ -71,34 +72,40 @@ public class FlightDaoImpl implements FlightDao{
 
 	public void addFlight(Flight flight) {
 		String sql = "insert into flights (departure, arrival, seatsNumber, price) values (?, ?, ?, ?)";
-		jdbcTemplate.update(sql, new Object[] { flight.getDeparture(), flight.getArrival(), flight.getSeatsNumber(), flight.getPrice() });
-		
+		jdbcTemplate.update(sql, new Object[] { flight.getDeparture(), flight.getArrival(), flight.getSeatsNumber(),
+				flight.getPrice() });
+
 	}
 
 	public void deleteFlight(String id) {
 		String sql = "delete from flights where id='" + id + "'";
 		jdbcTemplate.update(sql);
-		
+
 	}
 
 	public void updateFlight(Flight flight) {
-		// TODO Auto-generated method stub
-		
+		String sql = "update flights set departure='" + flight.getDeparture() + "',arrival='"
+				+ flight.getArrival() + "',seatsNumber='" + flight.getSeatsNumber() + "',price='" + flight.getPrice()
+				+ " where id='"+ flight.getId() + "'";
+		jdbcTemplate.update(sql);
+
 	}
 
 	public Flight findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from flights where id=?";
+		Flight flight = jdbcTemplate.queryForObject(sql, new Object[] { id },
+				new BeanPropertyRowMapper<Flight>(Flight.class));
+		return flight;
 	}
 
 	public void addTourist(String touristId, String flightId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void deleteTourist(String touristId, String flightId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
