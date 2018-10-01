@@ -5,20 +5,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Tourist</title>
+<title>Flight</title>
 </head>
 <body>
 	<table>
 		<tr>
-			<td><form:form method="GET" action="/space.flights/tourist/add">
-					<input type="submit" value="Add Tourist" />
+			<td><form:form method="GET" action="/space.flights/flight/add">
+					<input type="submit" value="Add Flight" />
 				</form:form></td>
-			<td><form:form method="GET" action="/space.flights/tourist/list">
-					<input type="submit" value="See Tourists" />
+			<td><form:form method="GET" action="/space.flights/flight/list">
+					<input type="submit" value="See Flights" />
 				</form:form></td>
 			<td><form:form method="GET"
-					action="/space.flights/tourist/tourists">
-					<input type="submit" value="Only Tourists" />
+					action="/space.flights/flight/flights">
+					<input type="submit" value="Only Flights" />
 				</form:form></td>
 		</tr>
 	</table>
