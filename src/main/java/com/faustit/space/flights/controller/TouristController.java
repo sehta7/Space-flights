@@ -1,5 +1,7 @@
 package com.faustit.space.flights.controller;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.faustit.space.flights.model.Flight;
@@ -42,12 +45,10 @@ public class TouristController {
 	@RequestMapping("/list")
 	public ModelAndView list() {
 		List<Tourist> touristsList = touristService.touristsList();
-		System.out.println("Controller --> " + touristsList.toString());
 		List<Flight> flightsList = null;
 		for (Tourist tourist : touristsList) {
 			flightsList = touristService.flightsList(tourist);
 			tourist.setFlights(flightsList);
-			//System.out.println("next flight of " + tourist.toString() + " = " + flightsList.toString());
 		}
 		ModelAndView modelAndView = new ModelAndView("tourist/list", "touristsList", touristsList);
 		return modelAndView;
@@ -69,6 +70,14 @@ public class TouristController {
 	public ModelAndView save(@ModelAttribute("tourist") Tourist tourist) {
 		touristService.addTourist(tourist);
 		return new ModelAndView("redirect:/tourist/tourists");
+	}
+	
+	@RequestMapping(value = "/saveFlight/{idT}", method = RequestMethod.POST)
+	public ModelAndView saveFlight(@RequestParam("flights") String flight,
+			@PathVariable("idT") String idT) {
+		String idF = flight.substring(flight.indexOf("=") + 1, flight.indexOf(","));
+		touristService.addFlight(idF, idT);
+		return new ModelAndView("redirect:/tourist/list");
 	}
 	
 	@RequestMapping("/delete/{id}")
@@ -102,6 +111,15 @@ public class TouristController {
 	public ModelAndView deleteFlight(@PathVariable("idT") String idT, @PathVariable("idF") String idF) {
 		touristService.deleteFlight(idT, idF);
 		return new ModelAndView("redirect:/tourist/list");
+	}
+	
+	@RequestMapping("/addFlight/{idT}")
+	public ModelAndView addFlight(@PathVariable("idT") String idT) {
+		List<Flight> flights = touristService.flightsList();
+		ModelAndView model = new ModelAndView("tourist/addFlight", "command", new Flight());
+		model.addObject("flights", flights);
+		model.addObject("idT", idT);
+		return model;
 	}
 	
 }
