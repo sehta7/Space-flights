@@ -104,7 +104,8 @@ public class FlightDaoImpl implements FlightDao {
 	}
 
 	public void deleteTourist(String touristId, String flightId) {
-		// TODO Auto-generated method stub
+		String sql = "delete from tourists_flights where touristId='" + touristId + "' and " + "flightId='" + flightId+ "'";
+		jdbcTemplate.update(sql);
 
 	}
 
