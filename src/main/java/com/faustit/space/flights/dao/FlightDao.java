@@ -8,7 +8,7 @@ import com.faustit.space.flights.model.Tourist;
 public interface FlightDao {
 
 	public List<Flight> flightsList();
-	public List<Flight> flightsList(Flight flight);
+	public List<Tourist> touristsList(Flight flight);
 	public List<Tourist> touristsList();
 	public void addFlight(Flight flight);
 	public void deleteFlight(String id);

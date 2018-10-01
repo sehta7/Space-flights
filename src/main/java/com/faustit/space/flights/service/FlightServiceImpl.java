@@ -19,8 +19,8 @@ public class FlightServiceImpl implements FlightService{
 		return flightDao.flightsList();
 	}
 
-	public List<Flight> flightsList(Flight flight) {
-		return flightDao.flightsList(flight);
+	public List<Tourist> touristsList(Flight flight) {
+		return flightDao.touristsList(flight);
 	}
 
 	public List<Tourist> touristsList() {

@@ -1,9 +1,12 @@
 package com.faustit.space.flights.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.faustit.space.flights.model.Flight;
@@ -24,13 +27,39 @@ public class FlightDaoImpl implements FlightDao{
 	}
 	
 	public List<Flight> flightsList() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from flights";
+		List<Flight> flightsList = jdbcTemplate.query(sql, new RowMapper<Flight>() {
+			public Flight mapRow(ResultSet rs, int rowNumber) throws SQLException {
+				Flight flight = new Flight();
+				flight.setId(rs.getString("id"));
+				flight.setDeparture(rs.getTimestamp("departure"));
+				flight.setArrival(rs.getTimestamp("arrival"));
+				flight.setSeatsNumber(rs.getInt("seatsNumber"));
+				flight.setPrice(rs.getFloat("price"));
+				return flight;
+			}
+		});
+		return flightsList;
 	}
 
-	public List<Flight> flightsList(Flight flight) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Tourist> touristsList(Flight flight) {
+		String sql = "select t.id, t.firstName, t.lastName, t.gender, t.country, t.notes, t.birth"
+				+ " from tourists as t, tourists_flights as tf" 
+				+ " where t.id=tf.flightId and tf.touristId='"+flight.getId() + "'";
+		List<Tourist> touristsList = jdbcTemplate.query(sql, new RowMapper<Tourist>() {
+			public Tourist mapRow(ResultSet rs, int rowNumber) throws SQLException {
+				Tourist tourist = new Tourist();
+				tourist.setId(rs.getString("id"));
+				tourist.setFirstName(rs.getString("firstName"));
+				tourist.setLastName(rs.getString("lastName"));
+				tourist.setGender(rs.getInt("gender"));
+				tourist.setCountry(rs.getString("country"));
+				tourist.setNotes(rs.getString("notes"));
+				tourist.setBirth(rs.getDate("birth"));
+				return tourist;
+			}
+		});
+		return touristsList;
 	}
 
 	public List<Tourist> touristsList() {
