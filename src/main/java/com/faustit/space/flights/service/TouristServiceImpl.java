@@ -23,6 +23,10 @@ public class TouristServiceImpl implements TouristService{
 	public List<Flight> flightsList(Tourist tourist) {
 		return touristDao.flightsList(tourist);
 	}
+	
+	public List<Flight> flightsList() {
+		return touristDao.flightsList();
+	}
 
 	public void addTourist(Tourist tourist) {
 		touristDao.addTourist(tourist);
@@ -43,8 +47,8 @@ public class TouristServiceImpl implements TouristService{
 		return touristDao.findById(id);
 	}
 
-	public void addFlight(Flight flight, Tourist tourist) {
-		touristDao.addFlight(flight, tourist);
+	public void addFlight(String idF, String idT) {
+		touristDao.addFlight(idF, idT);
 		
 	}
 
