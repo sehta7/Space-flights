@@ -45,6 +45,7 @@
 						<td>${tourist.country}</td>
 						<td>${tourist.notes}</td>
 						<td>${tourist.birth}</td>
+						<td><a href="deleteTourist/${tourist.id}/${flight.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 		
