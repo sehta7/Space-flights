@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.faustit.space.flights.model.Flight;
@@ -65,6 +66,15 @@ public class FlightController {
 		return new ModelAndView("redirect:/flight/flights");
 	}
 	
+	@RequestMapping(value = "/saveTourist/{idF}", method = RequestMethod.POST)
+	public ModelAndView saveTourist(@RequestParam("tourists") String tourist,
+			@PathVariable("idF") String idF) {
+		String idT = tourist.substring(tourist.indexOf("=") + 1, tourist.indexOf(","));
+		System.out.println("tourist id = " + idT + ", flight id = " + idF);
+		flightService.addTourist(idT, idF);
+		return new ModelAndView("redirect:/flight/list");
+	}
+	
 	@RequestMapping("/delete/{id}")
 	public ModelAndView delete(@PathVariable("id") String id) {
 		flightService.deleteFlight(id);
@@ -90,5 +100,15 @@ public class FlightController {
 	public ModelAndView deleteTourist(@PathVariable("idT") String idT, @PathVariable("idF") String idF) {
 		flightService.deleteTourist(idT, idF);
 		return new ModelAndView("redirect:/flight/list");
+	}
+	
+	@RequestMapping("/addTourist/{idF}")
+	public ModelAndView addFlight(@PathVariable("idF") String idF) {
+		List<Tourist> tourists = flightService.touristsList();
+		ModelAndView model = new ModelAndView("flight/addTourist", "command", new Tourist());
+		System.out.println("tourists: " + tourists.toString());
+		model.addObject("tourists", tourists);
+		model.addObject("idF", idF);
+		return model;
 	}
 }
