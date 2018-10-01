@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -61,6 +62,12 @@ public class FlightController {
 	public ModelAndView save(@ModelAttribute("flight") Flight flight) {
 		System.out.println("In controller");
 		flightService.addFlight(flight);
+		return new ModelAndView("redirect:/flight/flights");
+	}
+	
+	@RequestMapping("/delete/{id}")
+	public ModelAndView delete(@PathVariable("id") String id) {
+		flightService.deleteFlight(id);
 		return new ModelAndView("redirect:/flight/flights");
 	}
 }
