@@ -26,6 +26,8 @@
 				<td>${flight.arrival}</td>
 				<td>${flight.seatsNumber}</td>
 				<td>${flight.price}</td>
+				<td><a href="edit/${flight.id}">Edit</a></td>
+				<td><a href="delete/${flight.id}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>
