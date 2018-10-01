@@ -85,4 +85,10 @@ public class FlightController {
 		flightService.updateFlight(flight);
 		return new ModelAndView("redirect:/flight/flights");
 	}
+	
+	@RequestMapping("/deleteTourist/{idT}/{idF}")
+	public ModelAndView deleteTourist(@PathVariable("idT") String idT, @PathVariable("idF") String idF) {
+		flightService.deleteTourist(idT, idF);
+		return new ModelAndView("redirect:/flight/list");
+	}
 }
