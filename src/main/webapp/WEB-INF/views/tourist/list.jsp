@@ -19,20 +19,21 @@
 			<th>Birth</th>
 		</tr>
 		<c:forEach var="tourist" items="${touristsList}">
-			<tr>
-				<td>${tourist.firstName}</td>
-				<td>${tourist.lastName}</td>
-				<td>${tourist.gender}</td>
-				<td>${tourist.country}</td>
-				<td>${tourist.notes}</td>
-				<td>${tourist.birth}</td>
-			</tr>
-			<tr>
-				<td>Flights:</td>
-				<td>Departure</td>
-				<td>Arrival</td>
-				<td>Price</td>
-			</tr>
+				<tr>
+					<td>${tourist.firstName}</td>
+					<td>${tourist.lastName}</td>
+					<td>${tourist.gender}</td>
+					<td>${tourist.country}</td>
+					<td>${tourist.notes}</td>
+					<td>${tourist.birth}</td>
+				</tr>
+				<tr>
+					<td>Flights:</td>
+					<td>Departure</td>
+					<td>Arrival</td>
+					<td>Price</td>
+					<td><a href="addFlight/${tourist.id}">Add Flight</a></td>
+				</tr>
 			<tr>
 				<c:forEach var="flight" items="${tourist.flights}">
 					<tr>
@@ -40,6 +41,7 @@
 						<td>${flight.departure}</td>
 						<td>${flight.arrival}</td>
 						<td>${flight.price}</td>
+						<td><a href="deleteFlight/${tourist.id}/${flight.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 		</c:forEach>
