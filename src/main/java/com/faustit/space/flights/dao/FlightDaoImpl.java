@@ -66,8 +66,21 @@ public class FlightDaoImpl implements FlightDao {
 	}
 
 	public List<Tourist> touristsList() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from tourists";
+		List<Tourist> touristsList = jdbcTemplate.query(sql, new RowMapper<Tourist>() {
+			public Tourist mapRow(ResultSet rs, int rowNumber) throws SQLException {
+				Tourist tourist = new Tourist();
+				tourist.setId(rs.getString("id"));
+				tourist.setFirstName(rs.getString("firstName"));
+				tourist.setLastName(rs.getString("lastName"));
+				tourist.setGender(rs.getInt("gender"));
+				tourist.setCountry(rs.getString("country"));
+				tourist.setNotes(rs.getString("notes"));
+				tourist.setBirth(rs.getDate("birth"));
+				return tourist;
+			}
+		});
+		return touristsList;
 	}
 
 	public void addFlight(Flight flight) {
@@ -99,7 +112,8 @@ public class FlightDaoImpl implements FlightDao {
 	}
 
 	public void addTourist(String touristId, String flightId) {
-		// TODO Auto-generated method stub
+		String sql = "insert into tourists_flights (touristId, flightId) values (?, ?)";
+		jdbcTemplate.update(sql, new Object[] { touristId, flightId });
 
 	}
 
