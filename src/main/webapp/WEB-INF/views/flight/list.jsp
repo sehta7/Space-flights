@@ -34,6 +34,7 @@
 					<td>Country:</td>
 					<td>Notes:</td>
 					<td>Birth:</td>
+					<td><a href="addTourist/${flight.id}">Add Tourist</a></td>
 				</tr>
 			<tr>
 				<c:forEach var="tourist" items="${flight.tourists}">
