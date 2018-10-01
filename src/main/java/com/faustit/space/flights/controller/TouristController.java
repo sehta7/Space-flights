@@ -26,7 +26,7 @@ public class TouristController {
 	
 	@RequestMapping("/")
 	public ModelAndView home() {
-		return new ModelAndView("tourist/home", "lastName", new String());
+		return new ModelAndView("tourist/home");
 	}
 	
 	@RequestMapping("/tourists")
