@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List of tourist</title>
+<title>List of flights</title>
 </head>
 <body>
 	<form:form method="GET" action="/space.flights/flight/">

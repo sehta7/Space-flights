@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Edit tourist</title>
+<title>Edit flight</title>
 </head>
 <body>
 	<form:form method="POST" action="/space.flights/flight/editsave">
@@ -17,11 +17,11 @@
 			</tr>
 			<tr>
 				<td>Departure :</td>
-				<td><form:input path="departure" type="date"/></td>
+				<td><form:input path="departure"/></td>
 			</tr>
 			<tr>
 				<td>Arrival :</td>
-				<td><form:input path="arrival" type="date"/></td>
+				<td><form:input path="arrival"/></td>
 			</tr>
 			<tr>
 				<td>Seats :</td>
