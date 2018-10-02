@@ -101,7 +101,6 @@ public class FlightDaoImpl implements FlightDao {
 				+ flight.getArrival() + "',seatsNumber='" + flight.getSeatsNumber() + "',price='" + flight.getPrice()
 				+ " where id='"+ flight.getId() + "'";
 		jdbcTemplate.update(sql);
-
 	}
 
 	public Flight findById(String id) {
@@ -121,6 +120,32 @@ public class FlightDaoImpl implements FlightDao {
 		String sql = "delete from tourists_flights where touristId='" + touristId + "' and " + "flightId='" + flightId+ "'";
 		jdbcTemplate.update(sql);
 
+	}
+	
+	public boolean isSeat(String flightId) {
+		String sql = "select * from flights where id=?";
+		Flight flight = jdbcTemplate.queryForObject(sql, new Object[] {flightId}, new BeanPropertyRowMapper<Flight>(Flight.class));
+		int seats = flight.getSeatsNumber();
+		sql = "select t.id, t.firstName, t.lastName, t.gender, t.country, t.notes, t.birth"
+				+ " from tourists as t, tourists_flights as tf" + " where t.id=tf.touristId and tf.flightId='"
+				+ flight.getId() + "'";
+		List<Tourist> tourists = jdbcTemplate.query(sql, new RowMapper<Tourist>() {
+			public Tourist mapRow(ResultSet rs, int rowNumber) throws SQLException {
+				Tourist tourist = new Tourist();
+				tourist.setId(rs.getString("id"));
+				tourist.setFirstName(rs.getString("firstName"));
+				tourist.setLastName(rs.getString("lastName"));
+				tourist.setGender(rs.getInt("gender"));
+				tourist.setCountry(rs.getString("country"));
+				tourist.setNotes(rs.getString("notes"));
+				tourist.setBirth(rs.getDate("birth"));
+				return tourist;
+			}
+		});
+		if(tourists.size() < seats) {
+			return true;
+		}
+		return false;
 	}
 
 }

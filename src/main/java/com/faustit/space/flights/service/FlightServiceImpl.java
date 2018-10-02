@@ -55,5 +55,9 @@ public class FlightServiceImpl implements FlightService{
 		flightDao.deleteTourist(touristId, flightId);
 		
 	}
+	
+	public boolean isSeat(String flightId) {
+		return flightDao.isSeat(flightId);
+	}
 
 }

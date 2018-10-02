@@ -2,6 +2,8 @@ package com.faustit.space.flights.controller;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -66,8 +68,14 @@ public class FlightController {
 	@RequestMapping(value = "/saveTourist/{idF}", method = RequestMethod.POST)
 	public ModelAndView saveTourist(@RequestParam("tourists") String tourist,
 			@PathVariable("idF") String idF) {
-		String idT = tourist.substring(tourist.indexOf("=") + 1, tourist.indexOf(","));
-		flightService.addTourist(idT, idF);
+		if(flightService.isSeat(idF)) {
+			String idT = tourist.substring(tourist.indexOf("=") + 1, tourist.indexOf(","));
+			flightService.addTourist(idT, idF);
+			return new ModelAndView("redirect:/flight/list");
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "No more seats!");
+		}
 		return new ModelAndView("redirect:/flight/list");
 	}
 	

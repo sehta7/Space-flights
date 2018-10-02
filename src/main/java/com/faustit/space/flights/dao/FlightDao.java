@@ -16,4 +16,5 @@ public interface FlightDao {
 	public Flight findById(String id);
 	public void addTourist(String touristId, String flightId);
 	public void deleteTourist(String touristId, String flightId);
+	public boolean isSeat(String flightId);
 }
