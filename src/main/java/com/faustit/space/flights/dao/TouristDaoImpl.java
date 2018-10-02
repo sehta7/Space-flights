@@ -90,6 +90,7 @@ public class TouristDaoImpl implements TouristDao {
 	public void deleteTourist(String id) {
 		String sql = "delete from tourists where id='" + id + "'";
 		jdbcTemplate.update(sql);
+		sql = "delete from tourists_flights where touristId='" + id + "'";
 
 	}
 
