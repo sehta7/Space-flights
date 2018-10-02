@@ -1,5 +1,4 @@
 package com.faustit.space.flights.model;
-
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -61,11 +60,10 @@ public class Flight {
 	public void setFlights(List<Flight> flights) {
 		this.flights = flights;
 	}
-	
 	@Override
 	public String toString() {
 		return "Flight [id=" + id + ", departure=" + departure + ", arrival=" + arrival + ", seatsNumber=" + seatsNumber
-				+ ", tourists=" + tourists + ", price=" + price + "]";
+				+ ", tourists=" + tourists + ", price=" + price + ", flights=" + flights + "]";
 	}
 
 }

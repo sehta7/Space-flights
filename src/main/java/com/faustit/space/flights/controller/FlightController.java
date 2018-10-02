@@ -1,8 +1,6 @@
 package com.faustit.space.flights.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,7 +59,6 @@ public class FlightController {
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute("flight") Flight flight) {
-		System.out.println("In controller");
 		flightService.addFlight(flight);
 		return new ModelAndView("redirect:/flight/flights");
 	}
@@ -70,7 +67,6 @@ public class FlightController {
 	public ModelAndView saveTourist(@RequestParam("tourists") String tourist,
 			@PathVariable("idF") String idF) {
 		String idT = tourist.substring(tourist.indexOf("=") + 1, tourist.indexOf(","));
-		System.out.println("tourist id = " + idT + ", flight id = " + idF);
 		flightService.addTourist(idT, idF);
 		return new ModelAndView("redirect:/flight/list");
 	}
@@ -84,14 +80,12 @@ public class FlightController {
 	@RequestMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") String id) {
 		Flight flight = flightService.findById(id);
-		System.out.println("Found to edit - " + flight.toString());
 		ModelAndView model = new ModelAndView("flight/edit", "command", flight);
 		return model;
 	}
 	
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
 	public ModelAndView editsave(@ModelAttribute("Flight") Flight flight) {
-		System.out.println("Edit : " + flight.toString());
 		flightService.updateFlight(flight);
 		return new ModelAndView("redirect:/flight/flights");
 	}
@@ -106,7 +100,6 @@ public class FlightController {
 	public ModelAndView addFlight(@PathVariable("idF") String idF) {
 		List<Tourist> tourists = flightService.touristsList();
 		ModelAndView model = new ModelAndView("flight/addTourist", "command", new Tourist());
-		System.out.println("tourists: " + tourists.toString());
 		model.addObject("tourists", tourists);
 		model.addObject("idF", idF);
 		return model;
