@@ -6,36 +6,66 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="../css/form.css" />
+<link rel="stylesheet" type="text/css" href="../css/form.css" />
+<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+<link rel="stylesheet" type="text/css"
+	href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css"
+	href="vendor/css-hamburgers/hamburgers.min.css">
+<link rel="stylesheet" type="text/css"
+	href="vendor/select2/select2.min.css">
 <title>Edit flight</title>
 </head>
 <body>
-	<form:form method="POST" action="/space.flights/flight/editsave">
-		<table>
-			<tr>
-				<td></td>
-				<td><form:hidden path="id" /></td>
-			</tr>
-			<tr>
-				<td>Departure :</td>
-				<td><form:input path="departure"/></td>
-			</tr>
-			<tr>
-				<td>Arrival :</td>
-				<td><form:input path="arrival"/></td>
-			</tr>
-			<tr>
-				<td>Seats :</td>
-				<td><form:input path="seatsNumber" /></td>
-			</tr>
-			<tr>
-				<td>Price :</td>
-				<td><form:input path="price" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Update flight" /></td>
-			</tr>
-		</table>
-	</form:form>
+	<div class="bg-contact3">
+		<div class="container-contact3">
+			<div class="wrap-contact3">
+				<form:form method="POST" action="/space.flights/flight/editsave"
+					class="contact3-form validate-form">
+					<span class="contact3-form-title"> Edit flight </span>
+					
+					<div class="wrap-input3 validate-input">
+						<form:hidden path="id" />
+					</div>
+					
+					<div class="wrap-input3 validate-input"
+						data-validate="Date format: YYYY-mm-dd HH:mm:ss">
+						<form:input path="departure" class="input3" type="text"
+							name="departure" placeholder="Departure" />
+						<span class="focus-input3"></span>
+					</div>
+					
+					<div class="wrap-input3 validate-input"
+						data-validate="Date format: YYYY-mm-dd HH:mm:ss">
+						<form:input path="arrival" class="input3" type="text"
+							name="arrival" placeholder="Arrival" />
+						<span class="focus-input3"></span>
+					</div>
+					
+					<div class="wrap-input3 validate-input"
+						data-validate="Seats number is required">
+						<form:input path="seatsNumber" class="input3" type="number"
+							name="seats" placeholder="Seats number" />
+						<span class="focus-input3"></span>
+					</div>
+					
+					<div class="wrap-input3 validate-input"
+						data-validate="Price is required">
+						<form:input path="price" class="input3" type="number" step="0.01"
+							name="price" placeholder="Price" />
+						<span class="focus-input3"></span>
+					</div>
+					
+					<div class="container-contact3-form-btn">
+						<input type="submit" value="Update flight" class="contact3-form-btn" />
+					</div>
+				</form:form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

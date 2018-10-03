@@ -35,7 +35,7 @@ public class TouristDaoImpl implements TouristDao {
 				tourist.setId(rs.getString("id"));
 				tourist.setFirstName(rs.getString("firstName"));
 				tourist.setLastName(rs.getString("lastName"));
-				tourist.setGender(rs.getInt("gender"));
+				tourist.setGender(rs.getString("gender"));
 				tourist.setCountry(rs.getString("country"));
 				tourist.setNotes(rs.getString("notes"));
 				tourist.setBirth(rs.getDate("birth"));

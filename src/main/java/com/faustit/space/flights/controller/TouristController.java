@@ -56,10 +56,10 @@ public class TouristController {
 	public ModelAndView add() {
 		ModelAndView model = new ModelAndView("tourist/add", "command", new Tourist());
 		Map<String, String> gender = new HashMap<String, String>();
-		gender.put("0", "not know");
-		gender.put("1", "male");
-		gender.put("2", "female");
-		gender.put("9", "not applicable");
+		gender.put("Not know", "Not know");
+		gender.put("Male", "Male");
+		gender.put("Female", "Female");
+		gender.put("Not applicable", "Not applicable");
 		model.addObject("gender", gender);
 		return model;
 	}
@@ -89,10 +89,10 @@ public class TouristController {
 		Tourist tourist = touristService.findById(id);
 		ModelAndView model = new ModelAndView("tourist/edit", "command", tourist);
 		Map<String, String> gender = new HashMap<String, String>();
-		gender.put("0", "not know");
-		gender.put("1", "male");
-		gender.put("2", "female");
-		gender.put("9", "not applicable");
+		gender.put("Not know", "Not know");
+		gender.put("Male", "Male");
+		gender.put("Female", "Female");
+		gender.put("Not applicable", "Not applicable");
 		model.addObject("gender", gender);
 		return model;
 	}

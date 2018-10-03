@@ -13,7 +13,7 @@ public class Tourist {
 	private String id;
 	private String firstName;
 	private String lastName;
-	private int gender;
+	private String gender;
 	private String country;
 	private String notes;
 	private Date birth;
@@ -38,10 +38,10 @@ public class Tourist {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public int getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	public String getCountry() {

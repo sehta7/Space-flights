@@ -6,39 +6,48 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List of tourist</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+<title>List of tourists</title>
 </head>
 <body>
-	<form:form method="GET" action="/space.flights/tourist/">
-		<input type="submit" value="RETURN" />
-	</form:form>
-	<br>
-	<table border="2" width="70%" cellpadding="2">
-		<tr>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Gender</th>
-			<th>Country</th>
-			<th>Notes</th>
-			<th>Birth</th>
-		</tr>
-		<c:forEach var="tourist" items="${touristsList}">
-			<tr>
-				<td>${tourist.firstName}</td>
-				<td>${tourist.lastName}</td>
-				<td>${tourist.gender}</td>
-				<td>${tourist.country}</td>
-				<td>${tourist.notes}</td>
-				<td>${tourist.birth}</td>
-				<td><a href="edit/${tourist.id}">Edit</a></td>
-				<td><a href="delete/${tourist.id}">Delete</a></td>
-			</tr>
-		</c:forEach>
-	</table>
-	<p>
-		<form:form method="GET" action="/space.flights/tourist/add">
-			<input type="submit" value="Add Tourist" />
+	<div id="wrapper">
+		<form:form method="GET" action="/space.flights/tourist/">
+			<input type="submit" value="RETURN" class="button" />
 		</form:form>
-	</p>
+		<br>
+		<table id="keywords" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th><span>First Name</span></th>
+					<th><span>Last Name</span></th>
+					<th><span>Gender</span></th>
+					<th><span>Country</span></th>
+					<th><span>Notes</span></th>
+					<th><span>Birth</span></th>
+					<th><span> </span></th>
+					<th><span> </span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="tourist" items="${touristsList}">
+					<tr>
+						<td class="lalign">${tourist.firstName}</td>
+						<td class="lalign">${tourist.lastName}</td>
+						<td class="lalign">${tourist.gender}</td>
+						<td class="lalign">${tourist.country}</td>
+						<td class="lalign">${tourist.notes}</td>
+						<td class="lalign">${tourist.birth}</td>
+						<td><a href="edit/${tourist.id}" class="link">Edit</a></td>
+						<td><a href="delete/${tourist.id}" class="link">Delete</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<p>
+			<form:form method="GET" action="/space.flights/tourist/add">
+				<input type="submit" value="Add Tourist" class="button" />
+			</form:form>
+		</p>
+	</div>
 </body>
 </html>
