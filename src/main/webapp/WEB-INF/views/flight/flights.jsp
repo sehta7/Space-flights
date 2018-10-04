@@ -14,7 +14,7 @@
 		<form:form method="GET" action="/space.flights/flight/">
 			<input type="submit" value="RETURN" class="button" />
 		</form:form>
-		<br>
+		<h1>Flights</h1>
 		<table id="keywords" cellspacing="0" cellpadding="0">
 			<thead>
 				<tr>
@@ -22,6 +22,8 @@
 					<th><span>Arrival</span></th>
 					<th><span>Seats</span></th>
 					<th><span>Price</span></th>
+					<th><span> </span></th>
+					<th><span> </span></th>
 				</tr>
 			</thead>
 			<tbody>

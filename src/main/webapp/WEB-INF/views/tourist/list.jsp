@@ -15,6 +15,7 @@
 			<input type="submit" value="RETURN" class="button" />
 		</form:form>
 		<br>
+		<h1>Full list</h1>
 		<table id="keywords" cellspacing="0" cellpadding="0">
 			<thead>
 				<tr>

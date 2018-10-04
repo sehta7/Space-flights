@@ -46,7 +46,7 @@
 					<div class="wrap-input3 validate-input"
 						data-validate="Gender is required">
 						<form:select path="gender" class="input3" name="gender">
-							<form:option value="-1" label="Gender"/>
+							<form:option value="-1" label="---Gender---"/>
 							<form:options items="${gender}" />
 						</form:select>
 						<span class="focus-input3"></span>

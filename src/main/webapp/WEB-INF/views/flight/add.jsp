@@ -44,6 +44,7 @@
 					
 					<div class="wrap-input3 validate-input"
 						data-validate="Seats number is required">
+						<label class="input3">Seats number:</label>
 						<form:input path="seatsNumber" class="input3" type="number"
 							name="seats" placeholder="Seats number" />
 						<span class="focus-input3"></span>
@@ -51,6 +52,7 @@
 					
 					<div class="wrap-input3 validate-input"
 						data-validate="Price is required">
+						<label class="input3">Price:</label>
 						<form:input path="price" class="input3" type="number" step="0.01"
 							name="price" placeholder="Price" />
 						<span class="focus-input3"></span>
