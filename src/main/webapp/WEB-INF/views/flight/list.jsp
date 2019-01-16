@@ -18,11 +18,12 @@
 		<table id="keywords" cellspacing="0" cellpadding="0">
 			<thead>
 				<tr>
+				<th><span> </span></th>
 					<th><span>Departure</span></th>
 					<th><span>Arrival</span></th>
 					<th><span>Seats</span></th>
 					<th><span>Price</span></th>
-					<th><span> </span></th>
+					
 					<th><span> </span></th>
 					<th><span> </span></th>
 					<th><span> </span></th>
@@ -31,6 +32,7 @@
 			<tbody>
 				<c:forEach var="flight" items="${flightsList}">
 					<tr>
+						<td class="flight" ></td>
 						<td class="flight">${flight.departure}</td>
 						<td class="flight">${flight.arrival}</td>
 						<td class="flight">${flight.seatsNumber}</td>
@@ -38,10 +40,10 @@
 						<td class="flight" />
 						<td class="flight" />
 						<td class="flight" />
-						<td class="flight" />
+						
 					</tr>
 					<tr class="under">
-						<td></td>
+						<td class="empty"></td>
 						<td class="lalign">First Name:</td>
 						<td class="lalign">Last Name:</td>
 						<td class="lalign">Gender:</td>
@@ -54,7 +56,7 @@
 					<tr>
 						<c:forEach var="tourist" items="${flight.tourists}">
 							<tr>
-								<td></td>
+								<td class="empty"></td>
 								<td class="lalign">${tourist.firstName}</td>
 								<td class="lalign">${tourist.lastName}</td>
 								<td class="lalign">${tourist.gender}</td>
