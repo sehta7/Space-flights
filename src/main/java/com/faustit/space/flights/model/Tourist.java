@@ -78,8 +78,8 @@ public class Tourist {
 	
 	@Override
 	public String toString() {
-		return "Tourist [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
-				+ ", country=" + country + ", notes=" + notes + ", birth=" + birth + ", flights=" + flights + "]";
+		return "id: " + id + ", name: " + firstName + ", last name: " + lastName + ", gender: " + gender
+				+ ", country: " + country + ", notes: " + notes + ", birth: " + birth;
 	}
 	
 }

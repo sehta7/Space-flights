@@ -62,8 +62,7 @@ public class Flight {
 	}
 	@Override
 	public String toString() {
-		return "Flight [id=" + id + ", departure=" + departure + ", arrival=" + arrival + ", seatsNumber=" + seatsNumber
-				+ ", tourists=" + tourists + ", price=" + price + ", flights=" + flights + "]";
+		return "id: " + id + ", departure: " + departure + ", arrival: " + arrival + ", seats: " + seatsNumber
+				+ ", price: " + price;
 	}
-
 }
