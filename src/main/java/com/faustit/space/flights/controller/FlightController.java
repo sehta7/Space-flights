@@ -69,7 +69,7 @@ public class FlightController {
 	public ModelAndView saveTourist(@RequestParam("tourists") String tourist,
 			@PathVariable("idF") String idF) {
 		if(flightService.isSeat(idF)) {
-			String idT = tourist.substring(tourist.indexOf("=") + 1, tourist.indexOf(","));
+			String idT = tourist.substring(tourist.indexOf(":") + 1, tourist.indexOf(","));
 			flightService.addTourist(idT, idF);
 			return new ModelAndView("redirect:/flight/list");
 		}
@@ -105,10 +105,12 @@ public class FlightController {
 	}
 	
 	@RequestMapping("/addTourist/{idF}")
-	public ModelAndView addFlight(@PathVariable("idF") String idF) {
+	public ModelAndView addTourist(@PathVariable("idF") String idF) {
 		List<Tourist> tourists = flightService.touristsList();
 		ModelAndView model = new ModelAndView("flight/addTourist", "command", new Tourist());
 		model.addObject("tourists", tourists);
+		Flight flight = flightService.findById(idF);
+		model.addObject("flight", flight);
 		model.addObject("idF", idF);
 		return model;
 	}
