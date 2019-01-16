@@ -23,7 +23,7 @@
 	<bean id="ds"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver"></property>
+			value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/spaceflights?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"></property>
 		<property name="username" value="root"></property>
@@ -34,6 +34,10 @@
 	</bean>
 
 	<bean id="touristDao" class="com.faustit.space.flights.dao.TouristDaoImpl">
+		<property name="jdbcTemplate" ref="jt"></property>
+	</bean>
+	
+	<bean id="flightDao" class="com.faustit.space.flights.dao.FlightDaoImpl">
 		<property name="jdbcTemplate" ref="jt"></property>
 	</bean>
 	
