@@ -38,7 +38,7 @@
 						<td class="tourist">${tourist.birth}</td>
 					</tr>
 					<tr class="under">
-						<td class="lalign">Flights:</td>
+						<td class="empty"></td>
 						<td class="lalign">Departure</td>
 						<td class="lalign">Arrival</td>
 						<td class="lalign">Price</td>
@@ -47,7 +47,7 @@
 					<tr>
 						<c:forEach var="flight" items="${tourist.flights}">
 							<tr>
-								<td ></td>
+								<td class="empty"></td>
 								<td class="lalign">${flight.departure}</td>
 								<td class="lalign">${flight.arrival}</td>
 								<td class="lalign">${flight.price}</td>

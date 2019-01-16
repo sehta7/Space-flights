@@ -7,8 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="../css/form.css" />
-<link rel="stylesheet" type="text/css" href="../css/form.css" />
+<link rel="stylesheet" type="text/css" href="../../css/form.css" />
 <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 <link rel="stylesheet" type="text/css"
 	href="vendor/bootstrap/css/bootstrap.min.css">
@@ -22,22 +21,43 @@
 <title>Add tourist</title>
 </head>
 <body>
-	<form:form method="post" action="../saveFlight/${idT}">
-		<table>
-			<tr><td>Choose flight for ${idT}:</td></tr>
-			<tr>
-				<td><form:select path="flights">
-						<form:options items="${flights}" />
-					</form:select></td>
-					<c:forEach var="flight" items="flights">
-						<td><form:label path="${flight}"></form:label></td>
-					</c:forEach>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Add flight" /></td>
-			</tr>
-		</table>
-	</form:form>
+	<div class="bg-contact3">
+		<div class="container-contact3">
+			<div class="wrap-contact4">
+				<form:form method="post" action="../saveFlight/${idT}"
+					class="contact3-form validate-form">
+					<table>
+						<tr>
+							<td>Choose flight for ${tourist.firstName}
+								${tourist.lastName}:</td>
+						</tr>
+						<tr></tr>
+						<tr>
+							<td>
+								<div class="wrap-input3 validate-input"
+									data-validate="Must choose flight">
+									<form:select path="flights" class="input3" name="flights">
+										<form:options items="${flights}" />
+									</form:select>
+									<c:forEach var="flight" items="flights">
+										<td><form:label path="${flight}"></form:label></td>
+									</c:forEach>
+								</div>
+							</td>
+
+						</tr>
+						<tr>
+							<td>
+								<div class="container-contact3-form-btn">
+									<input type="submit" value="Add flight"
+										class="contact3-form-btn" />
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form:form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
