@@ -97,9 +97,9 @@ public class FlightDaoImpl implements FlightDao {
 	}
 
 	public void updateFlight(Flight flight) {
-		String sql = "update flights set departure='" + flight.getDeparture() + "',arrival='"
-				+ flight.getArrival() + "',seatsNumber='" + flight.getSeatsNumber() + "',price='" + flight.getPrice()
-				+ " where id='"+ flight.getId() + "'";
+		String sql = "update flights set departure='" + flight.getDeparture() + "', arrival='"
+				+ flight.getArrival() + "', seatsNumber='" + flight.getSeatsNumber() + "', price='" + flight.getPrice()
+				+ "' where flights.id='"+ flight.getId() + "'";
 		jdbcTemplate.update(sql);
 	}
 

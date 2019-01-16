@@ -95,9 +95,9 @@ public class TouristDaoImpl implements TouristDao {
 	}
 
 	public void updateTourist(Tourist tourist) {
-		String sql = "update tourists set" + " firstName='" + tourist.getFirstName() + "',lastName='"
-				+ tourist.getLastName() + "',gender='" + tourist.getGender() + "',country='" + tourist.getCountry()
-				+ "',notes='" + tourist.getNotes() + "',birth='" + tourist.getBirth() + "'" + " where id='"
+		String sql = "update tourists set" + " firstName='" + tourist.getFirstName() + "', lastName='"
+				+ tourist.getLastName() + "', gender='" + tourist.getGender() + "', country='" + tourist.getCountry()
+				+ "', notes='" + tourist.getNotes() + "', birth='" + tourist.getBirth() + "'" + " where tourists.id='"
 				+ tourist.getId() + "'";
 		jdbcTemplate.update(sql);
 
